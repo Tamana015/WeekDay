@@ -1,0 +1,86 @@
+.outerContainer{
+    max-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: wrap;
+    margin-top: -24px;
+    width: calc(100% + 24px);
+    padding: 20px 0px;
+}
+.innerContainer{
+    padding-left: 24px;
+    padding-top: 24px;
+    display: grid;
+    box-sizing: border-box;
+    margin: 0px;
+    flex-basis: 100%;
+    -webkit-box-flex: 0;
+    flex-grow: 0;
+    max-width: 100%;
+    @media (max-width: 1500px) {
+        flex-basis: 100%;
+        -webkit-box-flex: 0;
+        flex-grow: 0;
+        max-width: 100%;
+    };
+    @media (max-width: 900px) {
+        flex-basis: 100%;
+        -webkit-box-flex: 0;
+        flex-grow: 0;
+        max-width: 100%;
+    };
+    @media (max-width: 600px) {
+        flex-basis: 100%;
+        -webkit-box-flex: 0;
+        flex-grow: 0;
+        max-width: 100%;
+            
+    }
+}
+
+.sections{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-content: normal;
+    justify-content: normal;
+    align-items: normal;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: -24px;
+    width: calc(100% + 24px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card{
+    padding-top: 24px;
+    margin-top: 8px;
+    padding: 8px;
+    box-sizing: border-box;
+    margin: 0px;
+    flex-direction: row;
+    flex-basis: 100%;
+    -webkit-box-flex: 0;
+    flex-grow: 0;
+    max-width: 100%;
+    @media (max-width: 1500px) {
+        flex-basis: 33.3333%;
+        -webkit-box-flex: 0;
+        flex-grow: 0;
+        max-width: 33.3333%;
+    };
+    @media (max-width: 900px) {
+        flex-basis: 50%;
+        -webkit-box-flex: 0;
+        flex-grow: 0;
+        max-width: 50%;
+    };
+    @media (max-width: 600px) {
+        flex-basis: 100%;
+        -webkit-box-flex: 0;
+        flex-grow: 0;
+        max-width: 100%;
+    
+};
+}
