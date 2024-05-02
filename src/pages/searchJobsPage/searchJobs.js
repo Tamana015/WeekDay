@@ -8,8 +8,6 @@ import React, { useState, useEffect } from 'react';
 import './styles.css';
 import JobCard from '../../components/jobCardComponent/jobCard';
 import FilterList from '../../components/filterComponent/filterLists';
-import SearchableDropdown from '../../components/dropDownComponent/dropDown';
-import Dropdown from '../../components/dropDownComponent/dropDown';
       
 const SearchJobs = () => {
   const [jobList, setJobList] = useState([]);

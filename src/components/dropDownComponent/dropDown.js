@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import {useRef, useState } from "react";
 import './styles.css';
 
 const Dropdown = ({
@@ -13,11 +13,6 @@ const Dropdown = ({
 
   const inputRef = useRef(null);
 
-  useEffect(() => {
-    document.addEventListener("click", toggle);
-    return () => document.removeEventListener("click", toggle);
-  }, []);
-
   const selectOption = (option) => {
     setQuery(() => "");
     setValue(option[label]);
@@ -26,6 +21,10 @@ const Dropdown = ({
 
   function toggle(e) {
     setIsOpen(e && e.target === inputRef.current);
+  }
+
+  const toggleDropdown = () => {
+    setIsOpen((isOpen) => !isOpen);
   }
 
   const getDisplayValue = () => {
@@ -39,6 +38,11 @@ const Dropdown = ({
     return options.filter(
       (option) => option[label].toLowerCase().indexOf(query.toLowerCase()) > -1
     );
+  };
+
+  const clearInput = () => {
+    setQuery("");
+    setValue(null);
   };
 
   return (
@@ -57,20 +61,24 @@ const Dropdown = ({
                  }}
                  onClick={toggle}
             />
+             {getDisplayValue().length > 0 && (
+              <button className="clear-button" onClick={clearInput}>x</button>
+            )}
         </div>
         {options.length >0 && 
         <>
-         <div class="listDrop">
+         <div class="listDrop" onClick={toggleDropdown}>
            <span class="indicatorSeparator"></span>
             <div class="indicatorContainer">
             <div 
-            height="20" 
-            width="20"
-            viewBox="0 0 20 20"
-            focusable="false"
-            class={`arrow ${isOpen ? "open" : ""}`}
-            style={{marginLeft:'20px'}}></div>
+              height="20" 
+              width="20"
+              viewBox="0 0 20 20"
+              focusable="false"
+              class={`arrow ${isOpen ? "open" : ""}`}
+              style={{marginLeft:'20px'}}>    
             </div>
+          </div>
         </div>
         <div className={`options ${isOpen ? "open" : ""}`}>
         {filter(options).map((option, index) => {
@@ -81,6 +89,7 @@ const Dropdown = ({
                 option[label] === value ? "selected" : ""
               }`}
               key={`${id}-${index}`}
+              style={{fontSize:'16px', textAlign:'start', color:'black' , paddingLeft:'10px'}}
             >
               {option[label]}
             </div>
