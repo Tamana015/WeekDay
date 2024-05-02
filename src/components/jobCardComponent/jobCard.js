@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './styles.css';
+import AboutCompany from '../aboutCompanyComponent/aboutCompany';
+import ExperienceInfo from '../experienceInfoComponent/experienceInfo';
 
 const JobCard = ({ title, company, location, description, experience }) => {
   const [expanded, setExpanded] = useState(false);
@@ -28,50 +30,8 @@ const JobCard = ({ title, company, location, description, experience }) => {
         <span aria-label="Offered salary range" class> ✅</span>
         <br/>
         </p>
-        <div class="about-company-box">
-          <div class="about-company">
-            <p class="about-company-header">About Company:</p>
-            <div class="about-us">
-              <p>
-                <strong>
-                  About us
-                </strong>
-              </p>
-              <p>
-                <span style={{fontWeight:400}}>
-                 Flex Wash is an operating system for the car wash industry. Our solutions help owners manage their operations and grow revenue.
-                </span>
-              </p>
-              <p>
-                <span style={{fontWeight:400}}>
-                Our POS has a built-in CRM, allowing car washes to take advantage of their customer transaction history in order to funnel customers into subscriptions and higher margin wash packages.
-                </span>
-              </p>
-              <p></p>
-              <p>
-                <strong>
-                Founder/Recruiter profiles:
-                </strong>
-              </p>
-              <p>
-                <a href="https://www.linkedin.com/in/chirag-singh-toor-94713aa7/">
-                <span style={{fontWeight:400}}>Chirag Singh Toor</span>
-                </a>
-              </p>
-            </div>
-          </div>
-          <div class="viewJobs">
-                <a class="viewJobsLink" href="https://jobs.weekday.works/flexwash-technologies-founding-engineer?candidateId=U2FsdGVkX19g6bpedO/qCLmxWoM7lJQaP4qPPFXaEZs25XZxS+ZQShkpqB7xVIGd">View job</a>
-            </div>
-        </div>
-        <div class="info-container">
-          <h3 style={{marginTop: 10}}>Skills</h3>
-          <div class="language-container">
-              <p class="lang-skill">Founding Engineer</p>
-            </div>
-            <h3 style={{marginTop: 10}}>Minimum Experience</h3>
-            <h2 style={{ textAlign:'start'}}>5 years</h2>
-        </div>
+        <AboutCompany/>
+        <ExperienceInfo/>
       </div>
       <div class="button">
         <div class="applyButton">

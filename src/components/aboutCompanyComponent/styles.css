@@ -1,0 +1,44 @@
+  .body, h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  .about-company-box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .about-company-box p{
+    text-align: start;
+  }
+  .about-company{
+    height: 250px;
+    overflow: hidden;
+    mask-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgba(255, 255, 255, 0));
+  }
+  .about-company-header{
+    margin: 0px;
+    font-family: __LexendFont_7838d2, __LexendFont_Fallback_7838d2;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .about-us{
+    white-space: pre-wrap;
+    font-size: 14px;
+  }
+  .viewJobs{
+    width: 100%;
+    margin-bottom: 0.5rem;
+    position: relative;
+    top: -8px;
+  }
+  .viewJobsLink{
+    cursor: pointer;
+    color: rgb(73, 67, 218);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    width: 100%;
+  }
