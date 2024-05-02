@@ -7,6 +7,9 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
 import JobCard from '../../components/jobCardComponent/jobCard';
+import FilterList from '../../components/filterComponent/filterLists';
+import SearchableDropdown from '../../components/dropDownComponent/dropDown';
+import Dropdown from '../../components/dropDownComponent/dropDown';
       
 const SearchJobs = () => {
   const [jobList, setJobList] = useState([]);
@@ -50,15 +53,15 @@ const handleScroll = () => {
 useEffect(() => {
 window.addEventListener('scroll', handleScroll);
 return () => {
-  window.removeEventListener('scroll', handleScroll);
+window.removeEventListener('scroll', handleScroll);
 };
 }, []);
 
 console.log("==>",jobList);
-
   return (
     <div class="container">
       <div class="innerContainer">
+        <FilterList/>
         <div class="jobSections">
           {jobList.length>0 && jobList.map((job,index) => (
             <div class="jobCard" key={index}>

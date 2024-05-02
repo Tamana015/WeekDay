@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './styles.css';
 import AboutCompany from '../aboutCompanyComponent/aboutCompany';
 import ExperienceInfo from '../experienceInfoComponent/experienceInfo';
@@ -13,11 +13,6 @@ const JobCard = ({ title,
   minJdSalary,
   maxJdSalary,
   salaryCurrencyCode }) => {
-  const [expanded, setExpanded] = useState(false);
-
-  const toggleDescription = () => {
-    setExpanded(!expanded);
-  };
 
   return (
     <div class="cardContainer">

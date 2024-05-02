@@ -1,0 +1,8 @@
+.filterContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    padding: 0 20px 20px;
+    background-color: #fff;
+}
