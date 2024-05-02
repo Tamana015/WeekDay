@@ -5,6 +5,7 @@
   align-items: center;
   position: relative;
   border-radius: 20px;
+  height: 100%;
   padding: 5px;
   background-color: rgb(255, 255, 255);
   color: rgba(0, 0, 0, 0.87);
@@ -29,17 +30,20 @@
 }
 .inner-header {
   width: 100%;
+  padding: 0px 2px;
 }
 .companyName{
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 1px;
   color: #8b8b8b;
+  text-align: start;
 }  
 .title{
   font-size: 14px;
   line-height: 1.5;
   font-weight: 400;
+  text-align: start;
 }
 .locationExperience{
   font-size: 11px;
@@ -69,22 +73,22 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
+  margin-top: -30px;
 }
 .applyButton{
   -webkit-box-pack: justify;
   justify-content: space-between;
   display: flex;
   gap: 0.5rem;
-  width: 100%;
   padding: 8px 0px;
+  width: 100%;
 }
 .apply{
-  width: 100%;
   background-color: rgb(85, 239, 196);
   color: rgb(0, 0, 0);
   font-weight: 500;
   padding: 12px 20px;
   border-radius: 8px;
   margin: 5px;
-  min-width: 64px;
+  width: 100%;
 }
