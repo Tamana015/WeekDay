@@ -1,4 +1,4 @@
-import {useRef, useState } from "react";
+import { useState } from "react";
 import './styles.css';
 import { useDispatch } from "react-redux";
 import { setDropdownValue } from "../../store/Redux/action";
@@ -8,24 +8,28 @@ const Dropdown = ({
   options,
   label,
   id,
-  item
+  item,
+  multiSelectoption
 }) => {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState();
+  const [list, setList] = useState([]);
 
-  const inputRef = useRef(null);
   const dispatch = useDispatch();
 
   const selectOption = (option) => {
     setQuery(() => "");
+    //this taking time to update list
+    // setList(previous => {
+    //   const updatedList = [...previous, option[label]];
+    //   return updatedList;
+    // });
+    list.push(option[label]);
     setValue(option[label]);
     setIsOpen((isOpen) => !isOpen);
-    dispatch(setDropdownValue(item, option[label]));
+    dispatch(setDropdownValue(item, multiSelectoption ? list : option[label].toLowerCase()));
   };
-  function toggle(e) {
-    setIsOpen(e && e.target === inputRef.current);
-  }
 
   const toggleDropdown = () => {
     setIsOpen((isOpen) => !isOpen);
@@ -46,30 +50,52 @@ const Dropdown = ({
   };
 
   const clearInput = () => {
+    setList([]);
     setQuery("");
+    toggleDropdown();
     setValue(null);
     dispatch(setDropdownValue(item,''));
   };
 
+  const removeItemFromList = (value) => {
+    const updatedList = list.filter((inputValue) => inputValue !=value);
+    setList(updatedList);
+    dispatch(setDropdownValue(item, updatedList));
+    list.length && setValue(null) && setQuery("");
+  };
+
   return (
-    <>
+    <div style={{display:'grid'}}>
+    {(value || query) && <p className="searchLabel">{Locales[item]}</p>}
     <div className="dropdown">
-        <div className="control">
-            <div className="selected-value">{Locales[item]}</div>
-            <input className="select__input"
-                 ref={inputRef}
-                 type="text"
-                 value={getDisplayValue()}
-                 style={{ backgroundColor: getDisplayValue().length === 0 ? 'transparent' : 'white' }}
-                 onChange={(e) => {
-                   setQuery(e.target.value);
-                   setValue(null);
-                 }}
-                 onClick={toggle}
-            />
-             {getDisplayValue().length > 0 && (
-              <button className="clear-button" onClick={clearInput}>x</button>
-            )}
+        {multiSelectoption && 
+        list.map((values,index) => {
+          return(
+            <div className="multipleValueContainer"  onClick={() => removeItemFromList(values)} key={index}>
+            <div class="labelValue">{values}</div>
+            <div role="button" className="labelButton" aria-label="Remove backend">x</div>
+             </div>
+        )})}  
+        <div className="innerContainer" onClick={toggleDropdown}>
+            <div className="selected-value">{!value && !query && !list.length && Locales[item]}</div>
+            <div className="selectInputContainer">
+              <input className="selectInput"
+                  type="text"
+                  value={(list.length && multiSelectoption) ? '' : getDisplayValue()}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                    setValue("");
+                    if(multiSelectoption)
+                      {
+                        list.push(e.target.value);
+                      }
+                    dispatch(setDropdownValue(item, multiSelectoption ? list : e.target.value));
+                  }}
+              />
+         </div>
+         {getDisplayValue().length > 0 && (
+                <button className="clear-button" onClick={clearInput}>x</button>
+              )}
         </div>
         {options.length >0 && 
         <>
@@ -105,7 +131,7 @@ const Dropdown = ({
       </>
       }
     </div>
-    </>
+    </div>
   );
 };
 

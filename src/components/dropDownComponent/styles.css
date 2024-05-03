@@ -1,165 +1,203 @@
-  .dropdown {
-    -webkit-box-align: center;
-    align-items: center;
-    cursor: default;
-    display: flex;
-    flex-wrap: wrap;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    max-height: 45px;
-    position: relative;
-    transition: all 100ms ease 0s;
-    background-color: rgb(255, 255, 255);
-    border-color: rgb(204, 204, 204);
-    border-radius: 4px;
-    border-style: solid;
-    border-width: 1px;
-    box-sizing: border-box;
-    outline: 0px;
-    margin: 5px;
-    width: auto;
-    /* max-width: 200px; */
-  }
-  .clear-button {
-    position: absolute;
-    top: 45%;
-    right: 8px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    font-size: 22px;
-    color: black;
-    cursor: pointer;
-  }
-  .control{
-    -webkit-box-align: center;
-    align-items: center;
-    display: grid;
-    flex-wrap: wrap;
-    position: relative;
-    overflow: hidden;
-    padding: 2px 8px;
-    box-sizing: border-box;
-  }
-  .listDrop{
-    -webkit-box-align: center;
-    align-items: center;
-    align-self: stretch;
-    display: flex;
-    flex-shrink: 0;
-    box-sizing: border-box;
-  }
-  .selected-value{
+.dropdown {
+  -webkit-box-align: center;
+  align-items: center;
+  cursor: default;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  max-height: 45px;
+  position: relative;
+  transition: all 100ms ease 0s;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(204, 204, 204);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  outline: 0px;
+  margin: 5px;
+  width: auto;;
+}
+.searchLabel
+{
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: -5px;
+  margin-left: 5px;
+}
+.clear-button {
+  position: absolute;
+  top: 45%;
+  right: 8px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: black;
+  cursor: pointer;
+}
+
+.innerContainer{
+  -webkit-box-align: center;
+  align-items: center;
+  display: grid;
+  flex: 1 1 0%;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+  padding: 2px 8px;
+  width: 150px;
+}
+.listDrop{
+  -webkit-box-align: center;
+  align-items: center;
+  align-self: stretch;
+  border-width: 2px;
+  display: flex;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+.selected-value{
+  grid-area: 1 / 1 / 2 / 3;
+  color: rgb(128, 128, 128);
+  margin-left: 2px;
+  margin-right: 2px;
+  box-sizing: border-box;
+  position: relative;
+  font-size: 12px;
+}
+.selectInputContainer{
+     visibility: visible;
+    flex: 1 1 auto;
+    display: inline-grid;
     grid-area: 1 / 1 / 2 / 3;
-    color: rgb(128, 128, 128);
-    display: flex;
-    flex-direction: row;
-    margin-left: 2px;
-    margin-right: 2px;
+    grid-template-columns: 0px min-content;
+    margin: 2px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    color: rgb(51, 51, 51);
     box-sizing: border-box;
-    font-size: 15px;
-    padding: 7px 0px;
-    align-items: start;
-  }
-  .select__input{
-    background: 0px center;
-    opacity: 1;
-    grid-area: 1 / 2;
-    font: inherit;
-    font-size: 16px;
-    border: 0px;
-    margin: 0px;
-    outline: 0px;
-  }
-  .indicatorSeparator{
-    align-self: stretch;
-    width: 1px;
-    background-color: rgb(204, 204, 204);
-    margin-bottom: 8px;
-    margin-top: 8px;
-    box-sizing: border-box;
-    margin: 12px;
-  }
+}
+.selectInput{
+  color: inherit;
+  flex:1;
+  background: 0px center;
+  opacity: 1;
+  min-width: 30px;
+  grid-area: 1 / 2;
+  font: inherit;
+  border: 0px;
+  margin: 0px;
+  outline: 0px;
+  padding: 0px;
+  width: auto;
+}
+.indicatorSeparator{
+  align-self: stretch;
+  height: auto;
+  width: 1px;
+  background-color: rgb(204, 204, 204);
+  margin-bottom: 8px;
+  margin-top: 8px;
+  box-sizing: border-box;
+  margin: 8px;
+}
 .indicatorContainer{
-    display: flex;
-    transition: color 150ms ease 0s;
-    color: rgb(204, 204, 204);
-    padding: 8px;
-    box-sizing: border-box;
+  display: flex;
+  transition: color 150ms ease 0s;
+  color: rgb(204, 204, 204);
+  padding: 8px;
+  box-sizing: border-box;
 }
 .indicator{
-    display: inline-block;
-    fill: currentcolor;
-    line-height: 1;
-    stroke: currentcolor;
-    stroke-width: 0;
+  display: inline-block;
+  fill: currentcolor;
+  line-height: 1;
+  stroke: currentcolor;
+  stroke-width: 0;
 }
 
 
-  .dropdown .arrow {
-    border-color: #999 transparent transparent;
-    border-style: solid;
-    border-width: 5px 5px 0;
-    content: " ";
-    display: block;
-    height: 0;
-    margin-top: 0.3rem;
-    position: absolute;
-    right: 10px;
-    top: 14px;
-    width: 0;
-  }
-  
-  .dropdown .arrow.open {
-    border-color: transparent transparent #999;
-    border-width: 0 5px 5px;
-  }
-  
-  .dropdown .selected-value input {
-    line-height: 1.5;
-    font-size: 1rem;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 2px;
-    box-sizing: border-box;
-    cursor: default;
-    outline: none;
-    padding: 8px 52px 8px 10px;
-    transition: all 200ms ease;
-    width: 100%;
-  }
-  
-  .dropdown .options {
-    display: none;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
-    box-sizing: border-box;
-    margin-top: -1px;
-    max-height: 200px;
-    overflow-y: auto;
-    position: absolute;
-    top: 100%;
-    width: 100%;
-    z-index: 1000;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .dropdown .options.open {
-    display: block;
-  }
-  
-  .dropdown .option {
-    box-sizing: border-box;
-    color: rgba(51, 51, 51, 0.8);
-    cursor: pointer;
-    display: block;
-    padding: 8px 10px;
-  }
-  
-  .dropdown .option.selected,
-  .dropdown .option:hover {
-    background-color: #f2f9fc;
-    color: #333;
-  }
-  
+.dropdown .arrow {
+  border-color: #999 transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  content: " ";
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 14px;
+}
+
+.dropdown .arrow.open {
+  border-color: transparent transparent #999;
+  border-width: 0 5px 5px;
+}
+
+.dropdown .options {
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  margin-top: -1px;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 1000;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dropdown .options.open {
+  display: block;
+  margin-top: 5px;
+  border-radius: 10px;
+}
+
+.dropdown .option {
+  box-sizing: border-box;
+  color: rgba(51, 51, 51, 0.8);
+  cursor: pointer;
+  display: block;
+  padding: 8px 10px;
+}
+
+.dropdown .option:hover {
+  background-color: #f2f9fc;
+  color: #333;
+}
+
+.multipleValueContainer {
+  display: flex;
+  min-width: 0px;
+  background-color: rgb(230, 230, 230);
+  border-radius: 2px;
+  margin: 2px;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+
+.labelValue {
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+border-radius: 2px;
+color: rgb(51, 51, 51);
+font-size: 12px;
+padding: 3px 3px 3px 6px;
+box-sizing: border-box;
+text-transform: capitalize;
+}
+.labelButton {
+-webkit-box-align: center;
+align-items: center;
+display: flex;
+border-radius: 2px;
+padding-left: 4px;
+padding-right: 4px;
+box-sizing: border-box;
+font-size: 12px;
+}

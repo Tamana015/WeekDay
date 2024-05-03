@@ -33,6 +33,7 @@
     margin-bottom: 0.5rem;
     position: relative;
     top: -8px;
+    text-align: center;
   }
   .viewJobsLink{
     cursor: pointer;

@@ -11,7 +11,8 @@ const FilterList = () =>
                 return(
                 <Dropdown
                 key={index}
-                options={SEARCH_CONSTANTS[element]}
+                options={SEARCH_CONSTANTS[element].list}
+                multiSelectoption={SEARCH_CONSTANTS[element].multiSelectOption}
                 label="name"
                 id="id"
                 item={element}

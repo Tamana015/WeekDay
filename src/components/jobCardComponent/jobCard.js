@@ -4,8 +4,9 @@ import AboutCompany from '../aboutCompanyComponent/aboutCompany';
 import ExperienceInfo from '../experienceInfoComponent/experienceInfo';
 import { easyApply, estimatedSalary, hyphen } from '../../locales/locales';
 
-const JobCard = ({ title, 
-  company,
+const JobCard = ({ title,
+  logoUrl, 
+  companyName,
   minimumExperience, 
   location,
   companyDescription,
@@ -18,12 +19,10 @@ const JobCard = ({ title,
     <div className="cardContainer">
       <div className="innerCardContainer">
         <div className="sub-container">
-        {/* company logo is not in api data so using default company logo */}
-        <img className="logo" src="https://bookface-images.s3.amazonaws.com/logos/017257ba9b6f2ef9437d4228ef09c47656b900da.png" alt="logo"/>
+        <img className="logo" src={logoUrl} alt="logo"/>
           <div>
             <div className="inner-header">
-              {/* company name is not in api data so using default company name */}
-              <h3 className="companyName">{company || 'WeekDay'}</h3>
+              <h3 className="companyName">{companyName}</h3>
               <p className="title">{title}</p>
             </div>
           <p className="locationExperience">{location}</p>
