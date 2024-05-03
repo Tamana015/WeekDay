@@ -20,12 +20,7 @@ const Dropdown = ({
 
   const selectOption = (option) => {
     setQuery(() => "");
-    //this taking time to update list
-    // setList(previous => {
-    //   const updatedList = [...previous, option[label]];
-    //   return updatedList;
-    // });
-    list.push(option[label]);
+    if(multiSelectoption) {list.push(option[label])};
     setValue(option[label]);
     setIsOpen((isOpen) => !isOpen);
     dispatch(setDropdownValue(item, multiSelectoption ? list : option[label].toLowerCase()));
@@ -39,7 +34,7 @@ const Dropdown = ({
     if (query){
       return query;
     };
-    if (value) return value;
+    if (value && !list.length) return value;
     return "";
   };
 
@@ -66,34 +61,38 @@ const Dropdown = ({
 
   return (
     <div style={{display:'grid'}}>
-    {(value || query) && <p className="searchLabel">{Locales[item]}</p>}
+    {(value || query || list.length>0) && <p className="searchLabel">{Locales[item]}</p>}
     <div className="dropdown">
         {multiSelectoption && 
         list.map((values,index) => {
           return(
             <div className="multipleValueContainer"  onClick={() => removeItemFromList(values)} key={index}>
-            <div class="labelValue">{values}</div>
+            <div className="labelValue">{values}</div>
             <div role="button" className="labelButton" aria-label="Remove backend">x</div>
              </div>
         )})}  
-        <div className="innerContainer" onClick={toggleDropdown}>
+        <div className="innerContainer">
             <div className="selected-value">{!value && !query && !list.length && Locales[item]}</div>
             <div className="selectInputContainer">
               <input className="selectInput"
                   type="text"
-                  value={(list.length && multiSelectoption) ? '' : getDisplayValue()}
+                  value={getDisplayValue()}
                   onChange={(e) => {
                     setQuery(e.target.value);
                     setValue("");
-                    if(multiSelectoption)
+                    if(options.includes(e.target.value))
                       {
-                        list.push(e.target.value);
+                        if(multiSelectoption)
+                          {
+                            list.push(e.target.value);
+                          }
                       }
-                    dispatch(setDropdownValue(item, multiSelectoption ? list : e.target.value));
+                      dispatch(setDropdownValue(item, multiSelectoption ? list : e.target.value));
                   }}
+                  onClick={toggleDropdown}
               />
          </div>
-         {getDisplayValue().length > 0 && (
+         {getDisplayValue() || list.length > 0 && (
                 <button className="clear-button" onClick={clearInput}>x</button>
               )}
         </div>

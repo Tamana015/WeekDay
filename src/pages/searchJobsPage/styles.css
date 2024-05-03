@@ -5,11 +5,10 @@
     align-items: center;
     flex-flow: wrap;
     width: calc(100% + 24px);
-    padding: 20px 50px;
+    padding: 20px 90px;
 }
 .innerContainer{
-    padding: 24px;
-    display: grid;
+    display: flex;
     box-sizing: border-box;
     margin: 0px;
     flex-basis: 100%;
@@ -52,7 +51,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     margin-top: -24px;
-    width: calc(100% + 24px);
+    width: calc(100% + 14px);
     margin-left: auto;
     margin-right: auto;
 }
