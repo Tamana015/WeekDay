@@ -13,10 +13,10 @@ export const SEARCH_CONSTANTS =
       { id: 10, name: "10" },
     ],
     location : [
-      { id: 1, name: "Delhi" },
+      { id: 1, name: "Delhi NCR" },
       { id: 2, name: "Gurugram" },
       { id: 3, name: "Banglore" },
-      { id: 4, name: "chennai" },
+      { id: 4, name: "Chennai" },
       { id: 5, name: "Mumbai" },
     ],
     minimumBaseSalary : [
@@ -54,7 +54,7 @@ techStack :[
   { id: 7, name: "C#" },
   { id: 8, name: "Spring Boot" },
 ],
-seachCompanyName:[]
+searchCompanyName:[]
   }
 
   

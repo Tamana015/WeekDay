@@ -9,14 +9,15 @@ import './styles.css';
 import JobCard from '../../components/jobCardComponent/jobCard';
 import FilterList from '../../components/filterComponent/filterLists';
 import { useSelector } from 'react-redux';
+import { convertIntoLakhs, convertToRupees } from '../../utils/helper';
       
 const SearchJobs = () => {
   const [jobList, setJobList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const result = useSelector((state) => state)
+  const storeData = useSelector((state) => state)
+  console.log("store data is ",storeData);
 
-  console.log("redux store is ",result);
   const fetchJobData = async () => {
     setIsLoading(true);
     const myHeaders = new Headers();  
@@ -52,20 +53,43 @@ const handleScroll = () => {
   }
 };
   
-useEffect(() => {
-window.addEventListener('scroll', handleScroll);
-return () => {
-window.removeEventListener('scroll', handleScroll);
-};
-}, []);
+  useEffect(() => {
+  window.addEventListener('scroll', handleScroll);
+  return () => {
+  window.removeEventListener('scroll', handleScroll);
+  };
+  }, []);
+
+  const filteredJobs = jobList.filter(job => {  
+
+    console.log(" === ", storeData.dropdownValues.roles , ' ',job.jobRole, ' ',storeData.dropdownValues.roles == job.jobRole)
+     if (storeData.dropdownValues.location && job.location !== storeData.dropdownValues.location) return false;
+
+     //todo - if we have only maxSalary so how filtering expected
+    if (storeData.dropdownValues.minimumBaseSalary && (job.minJdSalary!=null && 
+      ( convertToRupees(job.minJdSalary,job.salaryCurrencyCode) <
+      convertToRupees(storeData.dropdownValues.minimumBaseSalary)) || job.minJdSalary==null )) return false;
+      
+    if (storeData.dropdownValues.experience && (job.minExp < storeData.dropdownValues.experience)) return false;
+  
+    if (storeData.dropdownValues.remotePreference && (job.location != storeData.dropdownValues.remotePreference)) return false;
+
+    if (storeData.dropdownValues.roles && (job.jobRole != storeData.dropdownValues.roles)) return false;
+
+    //we didn't get any company name is api so we using default Company Name Weekday
+    if (storeData.dropdownValues.searchCompanyName && ('weekday'!= storeData.dropdownValues.searchCompanyName)) return false;
+
+    return true;
+
+  });
 
   return (
-    <div class="container">
-      <div class="innerContainer">
+    <div className="container">
+      <div className="innerContainer">
         <FilterList/>
-        <div class="jobSections">
-          {jobList.length>0 && jobList.map((job,index) => (
-            <div class="jobCard" key={index}>
+        <div className="jobSections">
+          {filteredJobs.length>0 && filteredJobs.map((job,index) => (
+            <div className="jobCard" key={index}>
               <JobCard 
               title={job.jobRole} 
               location={job.location} 

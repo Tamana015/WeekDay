@@ -3,10 +3,10 @@ import './styles.css';
 import { aboutCompany, aboutUs } from '../../locales/locales';
 const AboutCompany = ({description, jdLink}) => {
     return (
-    <div class="about-company-box">
-    <div class="about-company">
-      <p class="about-company-header">{aboutCompany}</p>
-      <div class="about-us">
+    <div className="about-company-box">
+    <div className="about-company">
+      <p className="about-company-header">{aboutCompany}</p>
+      <div className="about-us">
         <p>
           <strong>
             {aboutUs}
@@ -20,8 +20,8 @@ const AboutCompany = ({description, jdLink}) => {
         <p></p>
       </div>
     </div>
-    <div class="viewJobs">
-          <a class="viewJobsLink" href={jdLink}>View job</a>
+    <div className="viewJobs">
+          <a className="viewJobsLink" href={jdLink}>View job</a>
       </div>
     </div>)
  }

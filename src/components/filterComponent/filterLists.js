@@ -6,7 +6,7 @@ import { SEARCH_CONSTANTS } from "../../locales/constants";
 const FilterList = () => 
 {
     return (
-        <div class="filterContainer">
+        <div className="filterContainer">
             {Object.keys(SEARCH_CONSTANTS).map((element,index) => {
                 return(
                 <Dropdown

@@ -4,14 +4,14 @@ import { minExperience } from '../../locales/locales';
 
 const ExperienceInfo = ({minimumExperience,skills}) => {
     return (
-    <div class="info-container">
+    <div className="info-container">
         {skills && 
         <>
             <h3 style={{marginTop: 10}}>Skills</h3>
             {
                 skills.length>0 && skills.map((skill,index) => (
-                    <div class="language-container" key={index}>
-                        <p class="lang-skill">{skill}</p>
+                    <div className="language-container" key={index}>
+                        <p className="lang-skill">{skill}</p>
                     </div>
                 ))}
         </>

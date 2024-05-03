@@ -12,5 +12,5 @@ export const Locales = {
     remotePreference:'Remote',
     roles:'Roles',
     techStack:'Tech Stack',
-    seachCompanyName:'Search Company Name'
+    searchCompanyName:'Search Company Name'
 }

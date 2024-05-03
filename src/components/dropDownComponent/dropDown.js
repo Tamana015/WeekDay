@@ -23,7 +23,6 @@ const Dropdown = ({
     setIsOpen((isOpen) => !isOpen);
     dispatch(setDropdownValue(item, option[label]));
   };
-
   function toggle(e) {
     setIsOpen(e && e.target === inputRef.current);
   }
@@ -33,29 +32,31 @@ const Dropdown = ({
   }
 
   const getDisplayValue = () => {
-    if (query) return query;
+    if (query){
+      return query;
+    };
     if (value) return value;
-
     return "";
   };
 
   const filter = (options) => {
     return options.filter(
-      (option) => option[label].toLowerCase().indexOf(query.toLowerCase()) > -1
+      (option) => option[label].toLowerCase().indexOf(query.toLowerCase()) > -1 || !query
     );
   };
 
   const clearInput = () => {
     setQuery("");
     setValue(null);
+    dispatch(setDropdownValue(item,''));
   };
 
   return (
     <>
-    <div class="dropdown">
-        <div class="control">
-            <div class="selected-value">{Locales[item]}</div>
-            <input class="select__input"
+    <div className="dropdown">
+        <div className="control">
+            <div className="selected-value">{Locales[item]}</div>
+            <input className="select__input"
                  ref={inputRef}
                  type="text"
                  value={getDisplayValue()}
@@ -72,15 +73,15 @@ const Dropdown = ({
         </div>
         {options.length >0 && 
         <>
-         <div class="listDrop" onClick={toggleDropdown}>
-           <span class="indicatorSeparator"></span>
-            <div class="indicatorContainer">
+         <div className="listDrop" onClick={toggleDropdown}>
+           <span className="indicatorSeparator"></span>
+            <div className="indicatorContainer">
             <div 
               height="20" 
               width="20"
               viewBox="0 0 20 20"
               focusable="false"
-              class={`arrow ${isOpen ? "open" : ""}`}
+              className={`arrow ${isOpen ? "open" : ""}`}
               style={{marginLeft:'20px'}}>    
             </div>
           </div>

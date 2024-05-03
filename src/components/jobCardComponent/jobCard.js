@@ -15,21 +15,21 @@ const JobCard = ({ title,
   salaryCurrencyCode }) => {
 
   return (
-    <div class="cardContainer">
-      <div class="innerCardContainer">
-        <div class="sub-container">
+    <div className="cardContainer">
+      <div className="innerCardContainer">
+        <div className="sub-container">
         {/* company logo is not in api data so using default company logo */}
-        <img class="logo" src="https://bookface-images.s3.amazonaws.com/logos/017257ba9b6f2ef9437d4228ef09c47656b900da.png" alt="logo"/>
+        <img className="logo" src="https://bookface-images.s3.amazonaws.com/logos/017257ba9b6f2ef9437d4228ef09c47656b900da.png" alt="logo"/>
           <div>
-            <div class="inner-header">
+            <div className="inner-header">
               {/* company name is not in api data so using default company name */}
-              <h3 class="companyName">{company || 'WeekDay'}</h3>
-              <p class="title">{title}</p>
+              <h3 className="companyName">{company || 'WeekDay'}</h3>
+              <p className="title">{title}</p>
             </div>
-          <p class="locationExperience">{location}</p>
+          <p className="locationExperience">{location}</p>
         </div>
         </div>
-        {(minJdSalary || maxJdSalary) && <p class="salary">
+        {(minJdSalary || maxJdSalary) && <p className="salary">
         {estimatedSalary}
         {salaryCurrencyCode} {minJdSalary}{minJdSalary && maxJdSalary && hyphen}{maxJdSalary}
         <span aria-label="Offered salary range" class> ✅</span>
@@ -38,10 +38,10 @@ const JobCard = ({ title,
         <AboutCompany description={companyDescription} jdLink={jdLink}/>
         <ExperienceInfo minimumExperience={minimumExperience}/>
       </div>
-      <div class="button">
-        <div class="applyButton">
+      <div className="button">
+        <div className="applyButton">
         <a href={jdLink} style={{width:'96%'}}>
-            <button class="apply" tabindex="0" type="button" id="custom-btn">{easyApply}</button>
+            <button className="apply" tabindex="0" type="button" id="custom-btn">{easyApply}</button>
         </a>
         </div>
       </div>

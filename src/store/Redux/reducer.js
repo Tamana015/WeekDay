@@ -11,7 +11,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         dropdownValues: {
           ...state.dropdownValues,
-          [action.payload.item]: action.payload.value,
+          [action.payload.item]: action.payload.value.toLowerCase(),
         },
       };
     default:
