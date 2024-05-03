@@ -1,5 +1,8 @@
 import {useRef, useState } from "react";
 import './styles.css';
+import { useDispatch } from "react-redux";
+import { setDropdownValue } from "../../store/Redux/action";
+import { Locales } from "../../locales/locales";
 
 const Dropdown = ({
   options,
@@ -12,11 +15,13 @@ const Dropdown = ({
   const [value, setValue] = useState();
 
   const inputRef = useRef(null);
+  const dispatch = useDispatch();
 
   const selectOption = (option) => {
     setQuery(() => "");
     setValue(option[label]);
     setIsOpen((isOpen) => !isOpen);
+    dispatch(setDropdownValue(item, option[label]));
   };
 
   function toggle(e) {
@@ -49,7 +54,7 @@ const Dropdown = ({
     <>
     <div class="dropdown">
         <div class="control">
-            <div class="selected-value">{item}</div>
+            <div class="selected-value">{Locales[item]}</div>
             <input class="select__input"
                  ref={inputRef}
                  type="text"

@@ -8,11 +8,15 @@ import React, { useState, useEffect } from 'react';
 import './styles.css';
 import JobCard from '../../components/jobCardComponent/jobCard';
 import FilterList from '../../components/filterComponent/filterLists';
+import { useSelector } from 'react-redux';
       
 const SearchJobs = () => {
   const [jobList, setJobList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const result = useSelector((state) => state)
+
+  console.log("redux store is ",result);
   const fetchJobData = async () => {
     setIsLoading(true);
     const myHeaders = new Headers();  
@@ -55,7 +59,6 @@ window.removeEventListener('scroll', handleScroll);
 };
 }, []);
 
-console.log("==>",jobList);
   return (
     <div class="container">
       <div class="innerContainer">

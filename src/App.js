@@ -1,13 +1,13 @@
 import './App.css';
 import SearchJobs from './pages/searchJobsPage/searchJobs';
+import { Provider } from "react-redux";
+import store from './store/Redux/store';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <Provider store={store}>
         <SearchJobs/>
-      </header>
-    </div>
+    </Provider>
   );
 }
 
